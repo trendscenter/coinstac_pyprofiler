@@ -1,0 +1,38 @@
+{
+    "start_time": 1602189232.251177,
+    "duration": 0.028713000000000002,
+    "sample_count": 1,
+    "program": "/Users/sbasodi1/workplace/python_profiler/examples/profiler_usage.py",
+    "cpu_time": 0.094694,
+    "root_frame": {
+        "function": "wrapped_profiler",
+        "file_path_short": "custom_profiler.py",
+        "file_path": "/Users/sbasodi1/workplace/python_profiler/custom_profiler.py",
+        "line_no": 27,
+        "time": 0.028599,
+        "is_application_code": true,
+        "children": [
+            {
+                "function": "test1",
+                "file_path_short": "profiler_usage.py",
+                "file_path": "/Users/sbasodi1/workplace/python_profiler/examples/profiler_usage.py",
+                "line_no": 19,
+                "time": 0.028599,
+                "is_application_code": true,
+                "group_id": null,
+                "children": [
+                    {
+                        "function": "counter",
+                        "file_path_short": "profiler_usage.py",
+                        "file_path": "/Users/sbasodi1/workplace/python_profiler/examples/profiler_usage.py",
+                        "line_no": 5,
+                        "time": 0.028599,
+                        "is_application_code": true,
+                        "group_id": null,
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}
