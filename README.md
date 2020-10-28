@@ -12,6 +12,7 @@ Use the following line above the method definition which needs to be profiled.
 
 ```python
 from coinstac_pyprofiler import custom_profiler as cprof
+
 @cprof.profile(type="pyinstrument", output_file_prefix=output_file_prefix)
 ```
 
@@ -24,7 +25,7 @@ Create object of Profile class in custom_profiler.py and use start() and stop() 
 
 ```python
 from coinstac_pyprofiler import custom_profiler as cprof
-@cprof.profile(type="pyinstrument", output_file_prefix=output_file_prefix)
+
 profile = cprof.Profile(type='pyinstrument',  output_file_prefix=<your_dir_path>/<some_file_prefix>")
 profile.start()
 <your code to profile>
