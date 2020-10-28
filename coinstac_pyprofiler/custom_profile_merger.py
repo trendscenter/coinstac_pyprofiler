@@ -2,10 +2,11 @@ import glob
 import os
 
 from coinstac_pyprofiler.core import RootNode as r_node
+from coinstac_pyprofiler.core import renderer as rd
 from coinstac_pyprofiler.core import utils as prof_ut
 
 
-def merge_json_computation(simulator_test_dir, num_clients, json_dir_name, output_dir, output_file_prefix,
+def merge_computation_json(simulator_test_dir, num_clients, json_dir_name, output_dir, output_file_prefix,
                            save_format="html", has_remote=True):
     """
     Merges the json profile output files generated using pyinstrument for every iteration of a computation
@@ -36,7 +37,7 @@ def merge_json_computation(simulator_test_dir, num_clients, json_dir_name, outpu
         current_client = CLIENT_DIR_NAME + str(client_num)
         current_dir = working_dir.replace(CLIENT_DIR_NAME, current_client)
         curr_output_file = output_file + "_" + current_client + "_merged"
-        merge(current_dir, curr_output_file, save_html='html' in save_format, save_json='json' in save_format)
+        merge_json(current_dir, curr_output_file, save_html='html' in save_format, save_json='json' in save_format)
 
     """
     merge remote files
@@ -45,10 +46,10 @@ def merge_json_computation(simulator_test_dir, num_clients, json_dir_name, outpu
         master_node = REMOTE_DIR_NAME
         current_dir = working_dir.replace(CLIENT_DIR_NAME, master_node)
         curr_output_file = output_file + "_" + master_node + "_merged"
-        merge(current_dir, curr_output_file, save_html='html' in save_format, save_json='json' in save_format)
+        merge_json(current_dir, curr_output_file, save_html='html' in save_format, save_json='json' in save_format)
 
 
-def merge(input_dir, output_file_prefix, save_html=True, save_json=False):
+def merge_json(input_dir, output_file_prefix, save_html=True, save_json=False):
     """
     Merges all the json in a file in a given directory 'input_dir' and saves the merged output in the output directory
     and file prefix mentioned in 'output_file_prefix'
@@ -75,4 +76,4 @@ def merge(input_dir, output_file_prefix, save_html=True, save_json=False):
     if save_json:
         prof_ut.write_json_to_file(json_string, output_file_prefix + ".json")
     if save_html:
-        prof_ut.write_to_file(prof_ut.render_html_from_json_string(json_string), output_file_prefix + ".html")
+        prof_ut.write_to_file(rd.render_html_from_json_string(json_string), output_file_prefix + ".html")

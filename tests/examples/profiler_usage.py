@@ -2,7 +2,7 @@
 
 from coinstac_pyprofiler import custom_profile_merger as pm
 from coinstac_pyprofiler import custom_profiler as cprof
-from coinstac_pyprofiler import visualizer as vz
+from coinstac_pyprofiler.core import renderer as rd
 
 
 def counter(count=100):
@@ -52,17 +52,17 @@ def merge_exp1_exp2_results():
 
     simulator_test_dir = './'
     json_folder = 'profile_log'
-    pm.merge_json_computation(simulator_test_dir, 2, json_folder, "./output/", "log", save_format="html|json",
+    pm.merge_computation_json(simulator_test_dir, 2, json_folder, "./output/", "log", save_format="html|json",
                               has_remote=False)
 
 
 def visualize_exp1_exp2_results():
     """
-    Generates an image of the merged profiled results in a tree format.
+    Generates an image of the merged profiled json results in a tree format.
     """
     results_dir = "./output/"
-    vz.visualize_json(results_dir + "log_local0_merged.json", results_dir + "log_local0_merged")
-    vz.visualize_json(results_dir + "log_local1_merged.json", results_dir + "log_local1_merged")
+    rd.render_tree_from_json(results_dir + "log_local0_merged.json", results_dir + "log_local0_merged")
+    rd.render_tree_from_json(results_dir + "log_local1_merged.json", results_dir + "log_local1_merged")
 
 
 if __name__ == "__main__":
