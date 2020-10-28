@@ -14,7 +14,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="coinstac_pyprofiler",  # Replace with your own username
-    version="0.0.1",
+    version="0.1.0",
     author="Sunitha Basodi",
     author_email="sunitha.basodi@gmail.com",
     description="A wrapper for some existing python profilers",
